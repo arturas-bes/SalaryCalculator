@@ -31,15 +31,15 @@ function myOutputObject() {
         employeePrice: 0,
         authorContractTax: 0,
         authorContractIncome: 0,
-        incomeInHand : 0,
+        incomeInHand: 0,
         incomeOnPaper: 0,
         totalncomeOnPaper: 0
-          
+
     };
     return output
 }
 //Function to calculate salary in hands
-function calculateSalaryInHand() { 
+function calculateSalaryInHand() {
     //init my object
     var myInputs = myInputObject();
     var myOutputs = myOutputObject();
@@ -54,15 +54,15 @@ function calculateSalaryInHand() {
         myInputs.salaryInHand = 0;
     }
     //employee tax
-    myOutputs.incomeTax = myInputs.incomeTax / 100 * myInputs.salaryOnPaper;      // callculate income tax % to (currency)
-    myOutputs.healthInsurance = myInputs.healthInsurance / 100 * myInputs.salaryOnPaper;  // calculate health insurance % to (currency)
-    myOutputs.retirementFund = myInputs.retirementFund / 100 * myInputs.salaryOnPaper;    // calculate retirement fund and tax % to (currency)
+    myOutputs.incomeTax = myInputs.incomeTax / 100 * myInputs.salaryOnPaper; // callculate income tax % to (currency)
+    myOutputs.healthInsurance = myInputs.healthInsurance / 100 * myInputs.salaryOnPaper; // calculate health insurance % to (currency)
+    myOutputs.retirementFund = myInputs.retirementFund / 100 * myInputs.salaryOnPaper; // calculate retirement fund and tax % to (currency)
     //income in hand
-    myOutputs.incomeInHand = myInputs.salaryOnPaper - myOutputs.incomeTax - myOutputs.healthInsurance - myOutputs.retirementFund;      //calculate slary in hand (currency)
+    myOutputs.incomeInHand = myInputs.salaryOnPaper - myOutputs.incomeTax - myOutputs.healthInsurance - myOutputs.retirementFund; //calculate slary in hand (currency)
     // author contracts
-    myOutputs.authorContractTax = myInputs.authorContract / 100 * myInputs.salaryOnPaper;        //money made from author contracts
+    myOutputs.authorContractTax = myInputs.authorContract / 100 * myInputs.salaryOnPaper; //money made from author contracts
     //employer tax
-    myOutputs.employerTaxes = myInputs.employerTax / 100 * myInputs.salaryOnPaper;   // calculate emplyrer tax % to (currency)
+    myOutputs.employerTaxes = myInputs.employerTax / 100 * myInputs.salaryOnPaper; // calculate emplyrer tax % to (currency)
     myOutputs.employeePrice = Number(myInputs.salaryOnPaper) + Number(myOutputs.employerTaxes); // employee price (currency) *Number() used to debug string*
     // create elemnts to output
     var output = `<table>
@@ -88,7 +88,7 @@ function calculateSalaryInHand() {
         <td>${myOutputs.employeePrice.toFixed(2)} EUR</td>
     
     </tr>
-    <tr>
+    <tr class="income">
         <td>Jūsų pajamos į rankas</td>
         <td></td>
         <td>${myOutputs.incomeInHand.toFixed(2)} EUR</td>
@@ -96,7 +96,7 @@ function calculateSalaryInHand() {
     </tr>
 </table>`;
     $('.inHandResults').html(output);
-    $('#authorIncText').text(`${myOutputs.authorContractTax.toFixed(2)} EUR`); 
+    $('#authorIncText').text(`${myOutputs.authorContractTax.toFixed(2)} EUR`);
 }
 
 
@@ -110,23 +110,23 @@ function calculateSalaryOnPaper() {
     var myOutputs = myOutputObject();
 
     //employee tax
-    myOutputs.incomeTax = myInputs.incomeTax / 100 * myInputs.salaryInHand;      // callculate income tax % to (currency)
-    myOutputs.healthInsurance = (myInputs.healthInsurance / 100 * myInputs.salaryInHand);  // calculate health insurance % to (currency)
-    myOutputs.retirementFund = myInputs.retirementFund / 100 * myInputs.salaryInHand;    // calculate retirement fund and tax % to (currency)
+    myOutputs.incomeTax = myInputs.incomeTax / 100 * myInputs.salaryInHand; // callculate income tax % to (currency)
+    myOutputs.healthInsurance = (myInputs.healthInsurance / 100 * myInputs.salaryInHand); // calculate health insurance % to (currency)
+    myOutputs.retirementFund = myInputs.retirementFund / 100 * myInputs.salaryInHand; // calculate retirement fund and tax % to (currency)
     // author contracts
     myOutputs.authorContractTax = myInputs.authorContract / 100 * myInputs.authorContractIncome; // calculate author contract % to (currency)
-    myOutputs.authorContractIncome = myInputs.authorContractIncome - myOutputs.authorContractTax;   //calculate income from author contract  (currency)  
+    myOutputs.authorContractIncome = myInputs.authorContractIncome - myOutputs.authorContractTax; //calculate income from author contract  (currency)  
     //income on paper
-    myOutputs.incomeOnPaper = Number(myInputs.salaryInHand) + Number(myOutputs.incomeTax) + Number(myOutputs.healthInsurance) + Number(myOutputs.retirementFund);      //calculate slary in hand (currency)
+    myOutputs.incomeOnPaper = Number(myInputs.salaryInHand) + Number(myOutputs.incomeTax) + Number(myOutputs.healthInsurance) + Number(myOutputs.retirementFund); //calculate slary in hand (currency)
     myOutputs.totalncomeOnPaper = Number(myOutputs.incomeOnPaper) + Number(myOutputs.authorContractIncome);
 
 
     // create elemnts to output
     var outputOnPaper = `<table>
-    <tr>
-        <td>Alga ant popieriaus</td>
+    <tr class="income">
+        <td >Alga ant popieriaus</td>
         <td></td>
-        <td>${myOutputs.incomeTax.toFixed(2)} EUR</td>
+        <td>${myOutputs.totalncomeOnPaper.toFixed(2)} EUR</td>
     </tr>
     <tr>
         <td>Pajamu mokestis</td>
@@ -149,9 +149,10 @@ function calculateSalaryOnPaper() {
 
 
     $('.resultsOnPaper').html(outputOnPaper);
+
     $('#authorsTaxesSum').text(`${myOutputs.authorContractTax.toFixed(2)} EUR`);
     $('#authorsTaxesPrecent').text(`${myInputs.authorContract}%`);
-    $('#authorsIncSum').text(`${myOutputs.authorContractIncome.toFixed(2)} EUR`);   
+    $('#authorsIncSum').text(`${myOutputs.authorContractIncome.toFixed(2)} EUR`);
 }
 
 
@@ -180,8 +181,7 @@ function elemntSwitch() {
     $('#showAuthorIncome').change(function () {
         if (this.checked) {
             $('.authorContrTax').fadeIn();
-        }
-        else {
+        } else {
             $('.authorContrTax').fadeOut();
         }
     });
@@ -189,8 +189,7 @@ function elemntSwitch() {
     $('#checkAuthorContrInput').change(function () {
         if (this.checked) {
             $('.hideAuthorContr').fadeIn();
-        }
-        else {
+        } else {
             $('.hideAuthorContr').fadeOut();
         }
     });

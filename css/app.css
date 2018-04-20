@@ -130,6 +130,7 @@ textarea {
     border: 1px solid white;
     font-weight: 600;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .button:hover {
