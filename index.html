@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="lt">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Atlyginimo skaičiuoklė</h1>
+
+        <nav id="nav">
+            <ul>
+                <li>
+                    <a id="settings" href="#">Nustatymai</a>
+                </li>
+                <li>
+                    <a id="inHand" href="#">Į rankas</a>
+                </li>
+                <li>
+                    <a id="onPaper" href="#">Ant popieriaus</a>
+                </li>
+
+            </ul>
+        </nav>
+        <div class="section settings">
+            <h2 class="tab-title">Nustatymai</h1>
+                <form action="" id="salary-calc-settings">
+                    <div class="block">
+                        <label class="field-name">Pajamų Mokestis:</label>
+                        <input class="inputField" id="incomeTax" class="taxInputFields" type="number" name="incomeTax" onfocus="this.value=''" value="0"
+                            placeholder="Įveskite procentą pvz 15%">
+                    </div>
+                    <div class="block">
+                        <label class="field-name">Sveikatos draudimas:</label>
+                        <input class="inputField" id="insurance" class="taxInputFields" type="number" name="insurance" onfocus="this.value=''" value="0"
+                            placeholder="Įveskite procentą pvz 6%">
+                    </div>
+                    <div class="block">
+                        <label class="field-name">Pensiju ir soc draudimas:</label>
+                        <input class="inputField" id="retirement" class="taxInputFields" type="number" name="retirement" onfocus="this.value=''"
+                            value="0" placeholder="Įveskite procentą pvz 3%">
+                    </div>
+                    <div class="block">
+                        <label class="field-name">Darbdavio sodros mokestis:</label>
+                        <input class="inputField" id="retirement" class="taxInputFields" type="number" name="employerTax" onfocus="this.value=''"
+                            value="0" placeholder="Įveskite procentą pvz 31.18%">
+                    </div>
+
+                    <div class="block">
+                        <label class="field-name">Autorinės sutartys:</label>
+                        <input class="inputField" id="authorContractInput" type="number" name="authorContract" onfocus="this.value=''" value="0"
+                            placeholder="Įveskite procentą pvz 24%">
+                    </div>
+                </form>
+        </div>
+        <div class="section calc-in-hand">
+            <h2 class="tab-title">Algos skaičiavimas į rankas</h1>
+                <div class="block">
+                    <label class="field-name">Įveskite algą ant popieriaus:</label>
+                    <input class="inputField" type="number" name="salaryOnPaper" onfocus="this.value=''" value="0" placeholder="Jūsų suma pvz: 200EUR">
+                </div>
+
+
+                <div class="button inHand">Skaičiuoti</div>
+                <div class="inHandResults">
+                    <table>
+                        <tr>
+                            <td>Sodros mokesčiai</td>
+                            <td>0%</td>
+                            <td>0.00 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>Sveikatos draudimas</td>
+                            <td>0%</td>
+                            <td>0.00 EUR</td>
+                        </tr>
+                        <tr>
+                            <td>Darbdavio mokesčiai</td>
+                            <td></td>
+                            <td>0.00 EUR</td>
+
+                        </tr>
+                        <tr>
+                            <td>Darbo vietos kaina</td>
+                            <td></td>
+                            <td>0.00 EUR</td>
+
+                        </tr>
+                        <tr class="income">
+                            <td>Jūsų pajamos į rankas</td>
+                            <td></td>
+                            <td>0.00 EUR</td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="block">
+                    <label class="field-name">Rodyti pajamas per autorines sutartis?</label>
+                    <input class="checkbox" id="showAuthorIncome" type="checkbox" name="authorIncomeCheck">
+                </div>
+                <div class="authorContrTax">
+                    <table>
+                        <tr>
+                            <td>Pajamos iš autorinių sutarčių</td>
+                            <td></td>
+                            <td class="income" id="authorIncText">0 EUR</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+        </div>
+        <div class="section calc-before-tax">
+            <h2 class="tab-title">Algos skaičiavimas ant popieriaus</h1>
+                <div class="block">
+                    <label class="field-name">Įveskite algą į rankas:</label>
+                    <input class="inputField" id="salaryAfterTax" type="number" name="salaryInHand" onfocus="this.value=''" value="0" placeholder="Jūsų suma pvz: 200EUR">
+                </div>
+                <div class="block">
+                    <label class="field-name">Skaicčiuoti pajamas per autorines sutartis?</label>
+                    <input class="checkbox" id="checkAuthorContrInput" type="checkbox" name="authorIncomeCheck">
+                </div>
+                <div class="block hideAuthorContr">
+                    <label class="field-name">Pajamos per atorines sutaris:</label>
+                    <input class="inputField" type="number" name="authorIncome" onfocus="this.value=''" value="0" placeholder="Jūsų suma pvz: 200EUR">
+                </div>
+                <div class="button onPaper">Skaičiuoti</div>
+                <div class="resultsOnPaper">
+                    <div class="incomeOnPaper">
+                        <table>
+                            <tr class="income">
+                                <td>Alga ant popieriaus</td>
+                                <td></td>
+                                <td>0.00 EUR</td>
+                            </tr>
+                            <tr>
+                                <td>Pajamu mokestis</td>
+                                <td>0%</td>
+                                <td>0.00 EUR</td>
+                            </tr>
+                            <tr>
+                                <td>Sodros mokesčiai</td>
+                                <td>0%</td>
+                                <td>0.00 EUR</td>
+
+                            </tr>
+                            <tr>
+                                <td>Sveikatos draudimas</td>
+                                <td>0%</td>
+                                <td>0.00 EUR</td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="authorContrTaxes hideAuthorContr">
+                        <table>
+                            <tr>
+                                <td>Autorinių sutarčių mokesčiai</td>
+                                <td id="authorsTaxesPrecent">0%</td>
+                                <td id="authorsTaxesSum">0,00 EUR</td>
+                            </tr>
+                            <tr>
+                                <td>Pajamos iš autorinių sutarčių</td>
+                                <td></td>
+                                <td class="income" id="authorsIncSum">0,00 EUR</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

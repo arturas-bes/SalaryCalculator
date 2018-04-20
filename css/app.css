@@ -1,0 +1,155 @@
+html {
+    box-sizing: border-box;
+    background: lightgray;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+#nav {
+    width: 760px;
+    margin: 0;
+    position: relative;
+    background: lightblue;
+}
+
+#nav ul {
+    width: auto;
+    padding: auto;
+    margin: auto;
+}
+
+#nav ul li {
+    display: inline-block;
+    max-width: 200px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+#nav ul li a {
+    width: 200px;
+    padding: 15px;
+    text-decoration: none;
+    color: darkslategray;
+}
+
+#nav ul li a:hover {
+    background: lightgrey;
+    color: black;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px;
+    background: lightblue;
+    height: 450px;
+    width: 760px;
+}
+
+.block {
+    padding-bottom: 15px;
+}
+
+label {
+    float: left;
+    min-width: 250px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+input,
+textarea {
+    text-align: left;
+    width: 250px;
+}
+
+.checkbox {
+    width: 50px;
+}
+
+.settings {
+    position: absolute;
+}
+
+.calc-in-hand {
+    position: absolute;
+    visibility: hidden;
+}
+
+.calc-before-tax {
+    position: absolute;
+    visibility: hidden;
+}
+
+.authorContrTax {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}
+
+#workLevel {
+    margin-bottom: 15px;
+}
+
+.button {
+    padding: 10px;
+    background: lightgreen;
+    border: 1px solid white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: green;
+}
+
+.result {
+    position: absolute;
+    margin-left: 50px;
+}
+
+.hideAuthorContr {
+    display: none;
+}
+
+.income {
+    background: lightgreen;
+    font-weight: bold;
+}
+
+table {
+    border: 1px solid white;
+}
