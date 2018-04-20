@@ -18,7 +18,12 @@ function myInputObject() {
         authorContractIncome: $('input[name="authorIncome"]').val(),
         salaryInHand: $('input[name="salaryInHand"]').val()
     };
+    if (inputFields.incomeTax < 0 || inputFields.healthInsurance < 0 || inputFields.retirementFund < 0 || inputFields.employerTax < 0 || inputFields.authorContract < 0 || inputFields.salaryOnPaper < 0 || inputFields.authorContractIncome < 0 || inputFields.salaryInHand < 0) {
     return inputFields
+    }
+    else {
+        return 0;
+    }
 }
 
 // Form output object
@@ -39,7 +44,7 @@ function myOutputObject() {
     return output
 }
 //Function to calculate salary in hands
-function calculateSalaryInHand() {
+function calculateSalaryInHand(inputObj, outputObj) {
     //init my object
     var myInputs = myInputObject();
     var myOutputs = myOutputObject();
