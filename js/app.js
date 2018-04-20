@@ -108,7 +108,17 @@ function calculateSalaryOnPaper() {
     //init my object
     var myInputs = myInputObject();
     var myOutputs = myOutputObject();
-
+    
+    if (myInputs.incomeTax < 0 || myInputs.healthInsurance < 0 || myInputs.retirementFund < 0 || myInputs.employerTax < 0 || myInputs.authorContract < 0 || myInputs.salaryOnPaper < 0 || myInputs.authorContractIncome < 0 || myInputs.salaryInHand < 0) {
+        myInputs.incomeTax = 0;
+        myInputs.healthInsurance = 0;
+        myInputs.retirementFund = 0;
+        myInputs.employerTax = 0;
+        myInputs.authorContract = 0;
+        myInputs.salaryOnPaper = 0;
+        myInputs.authorContractIncome = 0;
+        myInputs.salaryInHand = 0;
+    }
     //employee tax
     myOutputs.incomeTax = myInputs.incomeTax / 100 * myInputs.salaryInHand; // callculate income tax % to (currency)
     myOutputs.healthInsurance = (myInputs.healthInsurance / 100 * myInputs.salaryInHand); // calculate health insurance % to (currency)
